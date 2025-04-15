@@ -1,15 +1,35 @@
 import express from "express";
-import config from "./config/config";
-import router from "./routes";
+import config from "./config";
+import { AppDataSource } from "./config/db";
+import routes from "./routes";
+import errorHandler from "./middleware/errorValidator";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
 
-app.use(router);
+const allowedOrigins = ["http://localhost:5173"];
 
-app.listen(config.port ?? 3000, () => {
-  console.log(`Server running on port ${config.port ?? 3000}`);
-});
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, origin);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+AppDataSource.initialize()
+  .then(() => {
+    app.use(routes);
+    app.use(errorHandler);
 
-export default app;
+    app.listen(config.port, () => {
+      console.log(`Port is listening on ${config.port}`);
+    });
+  })
+  .catch((err) => console.log("Error connecting to database:", err));
