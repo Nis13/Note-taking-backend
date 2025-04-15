@@ -4,7 +4,7 @@ This is the backend API for the Note-Taking Application, built with **Node.js**,
 
 ---
 
-## 📐 Engineering Decisions
+## Engineering Decisions
 
 ### 1. **Node.js + Express + TypeScript**
 
@@ -22,7 +22,7 @@ This is the backend API for the Note-Taking Application, built with **Node.js**,
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### 1. **Clone the repository**
 
@@ -33,13 +33,13 @@ cd backend
 
 ### 2. **Install dependencies**
 
-Create a .env file in the root directory and set variables as in .env.example
+```bash
+npm install
+```
 
 ### 3. **Configure environement variables**
 
-```bash
-npm start
-```
+Create a .env file in the root directory and set variables as in .env.example
 
 ### 4. **Start the development server**
 
