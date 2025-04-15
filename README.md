@@ -28,7 +28,7 @@ This is the backend API for the Note-Taking Application, built with **Node.js**,
 
 ```bash
 git clone https://github.com/Nis13/Note-taking-backend.git
-cd backend
+cd Note-taking-backend
 ```
 
 ### 2. **Install dependencies**
@@ -37,7 +37,7 @@ cd backend
 npm install
 ```
 
-### 3. **Configure environement variables**
+### 3. **Configure environment variables**
 
 Create a .env file in the root directory and set variables as in .env.example
 
